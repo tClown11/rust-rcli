@@ -16,13 +16,14 @@ fn main() -> anyhow::Result<()> {
             process_csv(&opts.input, output, opts.format)?;
         }
         SubCommand::GenPass(opts) => {
-            process_genpass(
+            let output = process_genpass(
                 opts.length,
                 opts.uppercase,
                 opts.lowercase,
                 opts.number,
                 opts.symbol,
             )?;
+            println!("gen password: {}", output)
         }
     }
     Ok(())
